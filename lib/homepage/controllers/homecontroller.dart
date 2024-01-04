@@ -9,10 +9,14 @@ late Stream<HomeData> homeStream;
 HomeData homeData = HomeData('', false, {}, [], [], '', [], [], '');
 
 class HomeController {
+  //start stream
+
   startStream() {
     homeController = StreamController();
     homeStream = homeController.stream.asBroadcastStream();
   }
+
+  //get current users data from database
 
   getUserData() async {
     var user = await getLocalData('user');
@@ -39,6 +43,8 @@ class HomeController {
     }
   }
 
+  //logout current user
+
   logout() async {
     homeData.userData.clear();
     homeData.blacklists.clear();
@@ -48,6 +54,8 @@ class HomeController {
     await removeLocalData('user');
     homeController.add(homeData);
   }
+
+  //search employees from blacklist database
 
   searchEmployee(aadhar) async {
     try {
@@ -74,15 +82,16 @@ class HomeController {
     }
   }
 
+  //get registered users data from datasbe for admin
+
   getEmployers() async {
     try {
       homeData.employers.clear();
       var users = await FirebaseFirestore.instance.collection('users').get();
       if (users.docs.isNotEmpty) {
-        
         for (final val in users.docs) {
-          if(val.data()['role'] != 'admin'){
-          homeData.employers.add(val.data());
+          if (val.data()['role'] != 'admin') {
+            homeData.employers.add(val.data());
           }
         }
       }
@@ -90,6 +99,8 @@ class HomeController {
       debugPrint(e.toString());
     }
   }
+
+  //get blacklist users added by current user
 
   getMyIssues() async {
     try {
@@ -110,6 +121,8 @@ class HomeController {
     }
   }
 
+  //remove user from the blacklist
+
   removeFromBlackList(id) async {
     try {
       await FirebaseFirestore.instance
@@ -122,6 +135,8 @@ class HomeController {
       debugPrint(e.toString());
     }
   }
+
+  // approve or decline registered user by admin
 
   statusUpdate(email, status) async {
     try {

@@ -76,6 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     const AppText(
                         text: 'Login with Email and Password', size: 16),
+
+                    // input field for user registration data
+
                     StreamBuilder<Object>(
                         stream: _register,
                         builder: (context, snapshot) {
@@ -122,6 +125,9 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 20,
                     ),
+
+                    //input field for user registration data
+
                     StreamBuilder<Object>(
                         stream: _register,
                         builder: (context, snapshot) {
@@ -167,6 +173,9 @@ class _LoginPageState extends State<LoginPage> {
                           }
                           return Container();
                         }),
+
+                    //login or register button
+
                     StreamBuilder<Object>(
                         stream: _register,
                         builder: (context, snapshot) {
@@ -246,6 +255,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 20,
               ),
+
+              // login or register changing option
+
               Container(
                 width:
                     Dts(context).width > 650 ? 600 : Dts(context).width * 0.9,

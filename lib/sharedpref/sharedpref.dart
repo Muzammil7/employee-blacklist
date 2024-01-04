@@ -6,12 +6,16 @@ getSharedPref() async {
   sharedPref = await SharedPreferences.getInstance();
 }
 
+//save data in local
+
 setLocalData(key, value) async {
   if (sharedPref == null) {
     await getSharedPref();
   }
   sharedPref.setString(key, value);
 }
+
+//get data from local
 
 getLocalData(key) async {
   dynamic data;
@@ -25,6 +29,8 @@ getLocalData(key) async {
   }
   return data;
 }
+
+//remove data from local
 
 removeLocalData(key) async {
   if (sharedPref == null) {

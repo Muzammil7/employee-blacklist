@@ -10,11 +10,15 @@ late Stream<LoginData> loginStream;
 late LoginData loginData;
 
 class LoginController {
+  //start stream
+
   startStream() {
     loginController = StreamController();
     loginStream = loginController.stream.asBroadcastStream();
     loginData = LoginData('', false, false);
   }
+
+  //register user
 
   registerUser(name, company, phone, email, password, context) async {
     try {
@@ -45,6 +49,8 @@ class LoginController {
       loginController.add(loginData);
     }
   }
+
+  //login user
 
   login(email, password, context) async {
     try {

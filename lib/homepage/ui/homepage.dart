@@ -67,6 +67,9 @@ class _HomePageState extends State<HomePage> {
                         weight: FontWeight.w600,
                         color: theme,
                       )),
+
+                      //logout button
+
                       StreamBuilder(
                           stream: _user,
                           builder: (context, snapshot) {
@@ -95,6 +98,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
+
+              //search employee from blacklist database
+
               Container(
                 width:
                     Dts(context).width > 650 ? 600 : Dts(context).width * 0.9,
@@ -135,11 +141,17 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(
                       height: 20,
                     ),
+
+                    //search button
+
                     AppButton(
                         text: 'Search',
                         ontap: () {
                           HomeController().searchEmployee(_aadhar.text);
                         }),
+
+                    //blacklisted data of the searched id
+
                     StreamBuilder(
                         stream: _searches,
                         builder: (context, snapshot) {
@@ -216,9 +228,8 @@ class _HomePageState extends State<HomePage> {
                                                                             10,
                                                                       ),
                                                                       AppText(
-                                                                          text: 'Name : ${homeData.searchList[k]
-                                                                              [
-                                                                              'name']}',
+                                                                          text:
+                                                                              'Name : ${homeData.searchList[k]['name']}',
                                                                           size:
                                                                               14),
                                                                       const SizedBox(
@@ -226,9 +237,8 @@ class _HomePageState extends State<HomePage> {
                                                                             10,
                                                                       ),
                                                                       AppText(
-                                                                          text: 'Aadhar No : ${homeData.searchList[k]
-                                                                              [
-                                                                              'aadhar']}',
+                                                                          text:
+                                                                              'Aadhar No : ${homeData.searchList[k]['aadhar']}',
                                                                           size:
                                                                               14),
                                                                       const SizedBox(
@@ -319,6 +329,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 height: 20,
               ),
+
+              // add employee to black list for users and approve or decline user for admin
+
               StreamBuilder(
                   stream: _user,
                   builder: (context, snapshot) {
@@ -373,6 +386,9 @@ class _HomePageState extends State<HomePage> {
                                               : Colors.red,
                                     ),
                                   ),
+
+                            //blacklisted data by current user
+
                             StreamBuilder(
                                 stream: _blackList,
                                 builder: (context, snapshot) {
@@ -439,8 +455,9 @@ class _HomePageState extends State<HomePage> {
                                                                         ),
                                                                         AppText(
                                                                             text:
-                                                                               'Aadhar No : ${homeData.blacklists[k]['aadhar']}',
-                                                                            size: 14),
+                                                                                'Aadhar No : ${homeData.blacklists[k]['aadhar']}',
+                                                                            size:
+                                                                                14),
                                                                         const SizedBox(
                                                                           height:
                                                                               10,
@@ -549,6 +566,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       );
                     }
+
+                    // registered user shown to admin
+
                     return Container(
                       width: Dts(context).width > 650
                           ? 600

@@ -13,11 +13,15 @@ AddUserData addUSerData = AddUserData('', false, []);
 final ImagePicker picker = ImagePicker();
 
 class AddUserController {
+  //start stream
+
   startStream() {
     addUserController = StreamController();
     addUserStream = addUserController.stream.asBroadcastStream();
     addUSerData = AddUserData('', false, []);
   }
+
+  //pick images for user blacklist
 
   pickImages() async {
     List<XFile> pickedFile =
@@ -31,6 +35,8 @@ class AddUserController {
       }
     }
   }
+
+  // add black list data to database
 
   addBlackListData(name, aadhar, issues, context) async {
     try {

@@ -67,6 +67,9 @@ class _AddUserState extends State<AddUser> {
                     ],
                   ),
                 ),
+
+                // input fields for blacklist user data
+
                 const SizedBox(
                   height: 20,
                 ),
@@ -136,6 +139,9 @@ class _AddUserState extends State<AddUser> {
                             }
                             return Container();
                           }),
+
+                      // pick images for blacklist
+
                       InkWell(
                         onTap: () {
                           AddUserController().pickImages();
@@ -171,6 +177,9 @@ class _AddUserState extends State<AddUser> {
                       const SizedBox(
                         height: 20,
                       ),
+
+                      // error text
+
                       StreamBuilder<Object>(
                           stream: _error,
                           builder: (context, snapshot) {
@@ -196,6 +205,9 @@ class _AddUserState extends State<AddUser> {
                             }
                             return Container();
                           }),
+
+                      // bitton to submit blacklist data
+
                       AppButton(
                           text: 'Add to BlackList',
                           ontap: () {
